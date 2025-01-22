@@ -1,8 +1,6 @@
 package com.habitalign.controllers;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,17 +31,6 @@ public class DaysOfWeekController {
 
 		daysOfWeekService.updateDaysOfWeek(id, daysOfWeekDTO);
 		return ResponseEntity.noContent().build();
-	}
-
-	@GetMapping("/getdayofweek/{id}")
-	public ResponseEntity<DaysOfWeekDTO> getCategory(@PathVariable Long id) {
-		DaysOfWeekDTO daysOfWeekDTO = daysOfWeekService.getDaysOfWeekId(id);
-		return ResponseEntity.ok().body(daysOfWeekDTO);
-	}
-
-	@DeleteMapping("/deletedayofweek/{id}")
-	public void deleteCategory(@PathVariable Long id) {
-		daysOfWeekService.deleteById(id);
 	}
 
 }

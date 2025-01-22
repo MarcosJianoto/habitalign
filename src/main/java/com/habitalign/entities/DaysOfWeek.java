@@ -18,6 +18,9 @@ public class DaysOfWeek {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "view")
+	private Boolean view;
+
 	public DaysOfWeek(long l, String string) {
 		// TODO Auto-generated constructor stub
 	}
@@ -41,4 +44,13 @@ public class DaysOfWeek {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Boolean getView() {
+		return view;
+	}
+
+	public void setView(Boolean view) {
+		this.view = view;
+	}
+
 }

@@ -19,6 +19,7 @@ public class DaysOfWeekService {
 
 		DaysOfWeek daysOfWeek = new DaysOfWeek();
 		daysOfWeek.setName(daysOfWeekDTO.getName());
+		daysOfWeek.setView(daysOfWeekDTO.getView());
 		daysOfWeekRepository.save(daysOfWeek);
 	}
 
@@ -27,21 +28,12 @@ public class DaysOfWeekService {
 				.orElseThrow(() -> new IllegalArgumentException("Status not found"));
 
 		daysOfWeek.setName(daysOfWeekDTO.getName());
-	}
-
-	public DaysOfWeekDTO getDaysOfWeekId(Long id) {
-
-		DaysOfWeek daysOfWeek = daysOfWeekRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Status not found"));
-
-		DaysOfWeekDTO daysOfWeekDTO = new DaysOfWeekDTO();
-		daysOfWeekDTO.setId(daysOfWeek.getId());
-		daysOfWeekDTO.setName(daysOfWeek.getName());
-		return daysOfWeekDTO;
+		daysOfWeek.setView(daysOfWeekDTO.getView());
 
 	}
 
-	public void deleteById(Long id) {
-		daysOfWeekRepository.deleteById(id);
+	public void deleteDaysOfWeek() {
+		daysOfWeekRepository.deleteAll();
 	}
+
 }
