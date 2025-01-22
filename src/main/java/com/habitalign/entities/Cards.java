@@ -33,7 +33,7 @@ public class Cards {
 	private Statuses statuses;
 
 	@Column(name = "\"order\"", nullable = false)
-	private Integer order; 
+	private Integer order;
 
 	@Column(name = "created_at", nullable = false, updatable = false)
 	private LocalDateTime createdAt;

@@ -13,16 +13,24 @@ public class DaysOfWeek {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 
 	@Column(name = "name")
 	private String name;
 
-	public Integer getId() {
+	public DaysOfWeek(long l, String string) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public DaysOfWeek() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

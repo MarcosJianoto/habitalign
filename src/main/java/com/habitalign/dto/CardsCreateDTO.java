@@ -6,11 +6,28 @@ public class CardsCreateDTO {
 
 	private Long id;
 	private String title;
-	private Integer dayId;
-	private Integer statusId;
+	private Long dayId;
+	private Long statusId;
 	private Integer order;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+
+	public CardsCreateDTO() {
+		super();
+
+	}
+
+	public CardsCreateDTO(Long id, String title, Long dayId, Long statusId, Integer order, LocalDateTime createdAt,
+			LocalDateTime updatedAt) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.dayId = dayId;
+		this.statusId = statusId;
+		this.order = order;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
 
 	public Long getId() {
 		return id;
@@ -28,19 +45,19 @@ public class CardsCreateDTO {
 		this.title = title;
 	}
 
-	public Integer getDayId() {
+	public Long getDayId() {
 		return dayId;
 	}
 
-	public void setDayId(Integer dayId) {
+	public void setDayId(Long dayId) {
 		this.dayId = dayId;
 	}
 
-	public Integer getStatusId() {
+	public Long getStatusId() {
 		return statusId;
 	}
 
-	public void setStatusId(Integer statusId) {
+	public void setStatusId(Long statusId) {
 		this.statusId = statusId;
 	}
 

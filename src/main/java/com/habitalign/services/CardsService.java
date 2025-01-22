@@ -75,6 +75,7 @@ public class CardsService {
 		CardsUpdateDTO cardsUpdateDTO = new CardsUpdateDTO();
 		cardsUpdateDTO.setId(card.getId());
 		cardsUpdateDTO.setTitle(card.getTitle());
+		cardsUpdateDTO.setDayId(card.getDay().getId());
 		cardsUpdateDTO.setStatusId(card.getStatus().getId());
 		cardsUpdateDTO.setUpdatedAt(card.getUpdatedAt());
 		cardsUpdateDTO.setOrder(card.getOrder());
