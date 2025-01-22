@@ -36,8 +36,8 @@ public class StatusesService {
 				.orElseThrow(() -> new IllegalArgumentException("Status not found"));
 
 		StatusesDTO statusesDTO = new StatusesDTO();
-		statuses.setId(statuses.getId());
-		statuses.setName(statuses.getName());
+		statusesDTO.setId(statuses.getId());
+		statusesDTO.setName(statuses.getName());
 		return statusesDTO;
 
 	}
