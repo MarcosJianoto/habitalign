@@ -17,8 +17,8 @@ import jakarta.persistence.Table;
 public class Cards {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cards_category")
-	@SequenceGenerator(name = "cards_category", sequenceName = "cards_category", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cards_sequence")
+	@SequenceGenerator(name = "cards_sequence", sequenceName = "cards_sequence", allocationSize = 1)
 	private Long id;
 
 	@Column(name = "title")
