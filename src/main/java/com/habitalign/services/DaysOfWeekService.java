@@ -16,7 +16,6 @@ public class DaysOfWeekService {
 	}
 
 	public void saveDaysOfWeek(DaysOfWeekDTO daysOfWeekDTO) {
-
 		DaysOfWeek daysOfWeek = new DaysOfWeek();
 		daysOfWeek.setName(daysOfWeekDTO.getName());
 		daysOfWeek.setView(daysOfWeekDTO.getView());
