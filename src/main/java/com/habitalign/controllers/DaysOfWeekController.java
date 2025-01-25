@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.habitalign.dto.DaysOfWeekDTO;
+import com.habitalign.dto.DaysOfWeekActiveDTO;
 import com.habitalign.services.DaysOfWeekService;
 
 @RestController
@@ -21,15 +21,22 @@ public class DaysOfWeekController {
 	}
 
 	@PostMapping("/createdaysofweek")
-	public ResponseEntity<Void> saveCategory() {
+	public ResponseEntity<Void> saveCategory() throws Exception {
 		daysOfWeekService.saveDaysOfWeek();
 		return ResponseEntity.noContent().build();
 	}
 
-	@PutMapping("/updatedayofweek/{id}")
-	public ResponseEntity<Void> updateDaysOfWeek(@RequestBody DaysOfWeekDTO daysOfWeekDTO, @PathVariable Long id) {
+	@PutMapping("/updatealldaystatus/{active}")
+	public ResponseEntity<Void> updateAllDayStatus(@PathVariable Boolean active) {
+		daysOfWeekService.updateAllDayIfActiveOrInative(active);
+		return ResponseEntity.noContent().build();
+	}
 
-		daysOfWeekService.updateIsActiveDaysOfWeek(id, daysOfWeekDTO);
+	@PutMapping("/updatedayofweek/{id}")
+	public ResponseEntity<Void> updateDaysOfWeek(@RequestBody DaysOfWeekActiveDTO daysOfWeekActiveDTO,
+			@PathVariable Long id) {
+
+		daysOfWeekService.updateIsActiveDaysOfWeek(id, daysOfWeekActiveDTO);
 		return ResponseEntity.noContent().build();
 	}
 
