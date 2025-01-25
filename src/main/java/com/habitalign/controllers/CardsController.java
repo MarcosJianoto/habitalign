@@ -43,7 +43,7 @@ public class CardsController {
 	}
 
 	@DeleteMapping("/deletecard/{id}")
-	public void deleteCategory(@PathVariable Long id) {
+	public void deleteCard(@PathVariable Long id) {
 		cardsService.deleteById(id);
 	}
 

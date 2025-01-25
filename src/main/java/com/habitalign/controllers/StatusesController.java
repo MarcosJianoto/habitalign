@@ -22,27 +22,27 @@ public class StatusesController {
 	}
 
 	@PostMapping("/createstatuses")
-	public ResponseEntity<Void> saveCategory(@RequestBody StatusesDTO statusesDTO) {
+	public ResponseEntity<Void> saveStatuses(@RequestBody StatusesDTO statusesDTO) {
 
 		statusesService.saveStatuses(statusesDTO);
 		return ResponseEntity.noContent().build();
 	}
 
 	@PutMapping("/updatestatuses/{id}")
-	public ResponseEntity<Void> updateCategory(@RequestBody StatusesDTO statusesDTO, @PathVariable Long id) {
+	public ResponseEntity<Void> updateStatuses(@RequestBody StatusesDTO statusesDTO, @PathVariable Long id) {
 
 		statusesService.updateStatuses(id, statusesDTO);
 		return ResponseEntity.noContent().build();
 	}
 
-	@GetMapping("/getcard/{id}")
-	public ResponseEntity<StatusesDTO> getCategory(@PathVariable Long id) {
+	@GetMapping("/getstatuses/{id}")
+	public ResponseEntity<StatusesDTO> getStatuses(@PathVariable Long id) {
 		StatusesDTO statusesDTO = statusesService.getStatusesById(id);
 		return ResponseEntity.ok().body(statusesDTO);
 	}
 
-	@DeleteMapping("/deletecard/{id}")
-	public void deleteCategory(@PathVariable Long id) {
+	@DeleteMapping("/deletestatuses/{id}")
+	public void deleteStatuses(@PathVariable Long id) {
 		statusesService.deleteById(id);
 	}
 
