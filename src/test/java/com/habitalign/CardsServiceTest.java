@@ -42,23 +42,23 @@ public class CardsServiceTest {
 
 		CardsCreateDTO dto = new CardsCreateDTO();
 		dto.setTitle("New Card");
-		dto.setDayId(1L);
-		dto.setStatusId(2L);
+		dto.setDayId(1);
+		dto.setStatusId(2);
 		dto.setOrder(1);
 
 		DaysOfWeek mockDay = new DaysOfWeek();
-		mockDay.setId(1L);
+		mockDay.setId(1);
 		mockDay.setName("Monday");
 
 		Statuses mockStatuses = new Statuses();
-		mockStatuses.setId(1L);
+		mockStatuses.setId(1);
 		mockStatuses.setName("Em Progresso");
 
-		Mockito.when(dayOfWeekRepository.findById(1L)).thenReturn(Optional.of(mockDay));
-		Mockito.when(statusesRepository.findById(2L)).thenReturn(Optional.of(mockStatuses));
+		Mockito.when(dayOfWeekRepository.findById(1)).thenReturn(Optional.of(mockDay));
+		Mockito.when(statusesRepository.findById(2)).thenReturn(Optional.of(mockStatuses));
 		Mockito.when(cardsRepository.save(Mockito.any(Cards.class))).thenAnswer(invocation -> {
 			Cards card = invocation.getArgument(0);
-			card.setId(1L);
+			card.setId(1);
 			return card;
 		});
 
@@ -70,22 +70,22 @@ public class CardsServiceTest {
 	@Test
 	void updateCardTest() {
 
-		Long cardId = 1L;
+		Integer cardId = 1;
 		CardsUpdateDTO dto = new CardsUpdateDTO();
 		dto.setTitle("Updated Card Title");
-		dto.setDayId(2L);
-		dto.setStatusId(3L);
+		dto.setDayId(2);
+		dto.setStatusId(3);
 		dto.setOrder(2);
 
 		Cards existingCard = new Cards();
 		existingCard.setId(cardId);
 		existingCard.setTitle("Old Card Title");
-		existingCard.setDay(new DaysOfWeek(1L, "Monday"));
-		existingCard.setStatus(new Statuses(1L, "In Progress"));
+		existingCard.setDay(new DaysOfWeek(1, "Monday"));
+		existingCard.setStatus(new Statuses(1, "In Progress"));
 		existingCard.setOrder(1);
 
 		DaysOfWeek updatedDay = new DaysOfWeek();
-		updatedDay.setId(2L);
+		updatedDay.setId(2);
 		updatedDay.setName("Tuesday");
 
 		Statuses updatedStatus = new Statuses();
@@ -113,13 +113,13 @@ public class CardsServiceTest {
 
 	@Test
 	void getCardById_ShouldReturnCardsUpdateDTO_WhenCardExists() {
-		Long cardId = 1L;
+		Integer cardId = 1;
 
 		Cards card = new Cards();
 		card.setId(cardId);
 		card.setTitle("Test Card");
-		card.setDay(new DaysOfWeek(1L, "Monday"));
-		card.setStatus(new Statuses(2L, "In Progress"));
+		card.setDay(new DaysOfWeek(1, "Monday"));
+		card.setStatus(new Statuses(2, "In Progress"));
 		card.setUpdatedAt(LocalDateTime.now());
 		card.setOrder(1);
 
@@ -140,7 +140,7 @@ public class CardsServiceTest {
 
 	@Test
 	void getCardById_ShouldThrowException_WhenCardDoesNotExist() {
-		Long cardId = 1L;
+		Integer cardId = 1;
 
 		Mockito.when(cardsRepository.findById(cardId)).thenReturn(Optional.empty());
 
@@ -153,7 +153,7 @@ public class CardsServiceTest {
 
 	@Test
 	void deleteById_ShouldCallRepository_WhenIdExists() {
-		Long cardId = 1L;
+		Integer cardId = 1;
 
 		Mockito.doNothing().when(cardsRepository).deleteById(cardId);
 
@@ -164,7 +164,7 @@ public class CardsServiceTest {
 
 	@Test
 	void deleteById_ShouldThrowException_WhenIdDoesNotExist() {
-		Long cardId = 1L;
+		Integer cardId = 1;
 
 		Mockito.doThrow(new EmptyResultDataAccessException(1)).when(cardsRepository).deleteById(cardId);
 
