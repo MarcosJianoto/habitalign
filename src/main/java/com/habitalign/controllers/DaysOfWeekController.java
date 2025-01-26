@@ -34,7 +34,7 @@ public class DaysOfWeekController {
 
 	@PutMapping("/updatedayofweek/{id}")
 	public ResponseEntity<Void> updateDaysOfWeek(@RequestBody DaysOfWeekActiveDTO daysOfWeekActiveDTO,
-			@PathVariable Long id) {
+			@PathVariable Integer id) {
 
 		daysOfWeekService.updateIsActiveDaysOfWeek(id, daysOfWeekActiveDTO);
 		return ResponseEntity.noContent().build();

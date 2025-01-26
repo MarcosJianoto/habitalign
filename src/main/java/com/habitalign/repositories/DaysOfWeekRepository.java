@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.habitalign.entities.DaysOfWeek;
 
 @Repository
-public interface DaysOfWeekRepository extends JpaRepository<DaysOfWeek, Long> {
+public interface DaysOfWeekRepository extends JpaRepository<DaysOfWeek, Integer> {
 
 	Optional<DaysOfWeek> findById(Integer dayId);
 }

@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
+import com.habitalign.dto.CardUpdateDayIdDTO;
+import com.habitalign.dto.CardUpdatePositionColumnIdDTO;
 import com.habitalign.dto.CardsCreateDTO;
 import com.habitalign.dto.CardsUpdateDTO;
 import com.habitalign.entities.Cards;
@@ -27,13 +29,23 @@ public class CardsService {
 		this.statusesRepository = statusesRepository;
 	}
 
+	private DaysOfWeek findDaysOfWeekById(Integer dayId) {
+		return dayOfWeekRepository.findById(dayId)
+				.orElseThrow(() -> new IllegalArgumentException("Day of Week not found"));
+	}
+
+	private Statuses findStatusById(Integer statusId) {
+		return statusesRepository.findById(statusId)
+				.orElseThrow(() -> new IllegalArgumentException("Statuses not found"));
+	}
+
+	private Cards findCardById(Integer cardId) {
+		return cardsRepository.findById(cardId).orElseThrow(() -> new IllegalArgumentException("Card not found"));
+	}
+
 	public void saveCard(CardsCreateDTO cardsCreateDTO) {
-
-		DaysOfWeek daysOfWeek = dayOfWeekRepository.findById(cardsCreateDTO.getDayId())
-				.orElseThrow(() -> new IllegalArgumentException("Dia da semana não encontrado"));
-
-		Statuses statuses = statusesRepository.findById(cardsCreateDTO.getStatusId())
-				.orElseThrow(() -> new IllegalArgumentException("Status não encontrado"));
+		DaysOfWeek daysOfWeek = findDaysOfWeekById(cardsCreateDTO.getDayId());
+		Statuses statuses = findStatusById(cardsCreateDTO.getStatusId());
 
 		Cards card = new Cards();
 
@@ -45,45 +57,73 @@ public class CardsService {
 		card.setUpdatedAt(LocalDateTime.now());
 
 		cardsRepository.save(card);
+	}
+
+	public void updateCardsDTO(Integer id, CardsUpdateDTO cardsUpdateDTO) {
+
+		Cards card = findCardById(id);
+		Boolean updated = false;
+
+		if (cardsUpdateDTO.getTitle() != null) {
+			card.setTitle(cardsUpdateDTO.getTitle());
+			updated = true;
+		}
+
+		if (cardsUpdateDTO.getStatusId() != null) {
+			Statuses statuses = findStatusById(cardsUpdateDTO.getStatusId());
+			card.setStatus(statuses);
+			updated = true;
+		}
+
+		if (updated) {
+			card.setUpdatedAt(LocalDateTime.now());
+			cardsRepository.save(card);
+		}
 
 	}
 
-	public void updateCardsDTO(Long id, CardsUpdateDTO cardsUpdateDTO) {
+	// Move card between position in same column
+	public void updatePositionCardInColumn(Integer id, CardUpdatePositionColumnIdDTO cardUpdatePositionColumnIdDTO) {
 
-		Cards card = cardsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Card is not found"));
+		Cards card = findCardById(id);
 
-		DaysOfWeek daysOfWeek = dayOfWeekRepository.findById(cardsUpdateDTO.getDayId())
-				.orElseThrow(() -> new IllegalArgumentException("Dia da semana não encontrado"));
-
-		Statuses statuses = statusesRepository.findById(cardsUpdateDTO.getStatusId())
-				.orElseThrow(() -> new IllegalArgumentException("Status não encontrado"));
-
-		card.setTitle(cardsUpdateDTO.getTitle());
-		card.setDay(daysOfWeek);
-		card.setStatus(statuses);
-		card.setOrder(cardsUpdateDTO.getOrder());
-		card.setUpdatedAt(LocalDateTime.now());
-
-		cardsRepository.save(card);
+		if (cardUpdatePositionColumnIdDTO.getPositionId() != card.getOrder()) {
+			card.setOrder(cardUpdatePositionColumnIdDTO.getPositionId());
+			card.setUpdatedAt(LocalDateTime.now());
+			cardsRepository.save(card);
+		}
 
 	}
 
-	public CardsUpdateDTO getCardById(Long id) {
-		Cards card = cardsRepository.findById(id)
-				.orElseThrow(() -> new IllegalArgumentException("Card não encontrado"));
+	// Move card between columns
+	public void updateDayIdCard(Integer id, CardUpdateDayIdDTO cardUpdateDayIdDTO) {
 
-		CardsUpdateDTO cardsUpdateDTO = new CardsUpdateDTO();
-		cardsUpdateDTO.setId(card.getId());
-		cardsUpdateDTO.setTitle(card.getTitle());
-		cardsUpdateDTO.setDayId(card.getDay().getId());
-		cardsUpdateDTO.setStatusId(card.getStatus().getId());
-		cardsUpdateDTO.setUpdatedAt(card.getUpdatedAt());
-		cardsUpdateDTO.setOrder(card.getOrder());
+		Cards card = findCardById(id);
 
-		return cardsUpdateDTO;
+		if (!cardUpdateDayIdDTO.getDayId().equals(card.getDay().getId())) {
+			DaysOfWeek dayOfWeek = findDaysOfWeekById(cardUpdateDayIdDTO.getDayId());
+			card.setDay(dayOfWeek);
+			card.setUpdatedAt(LocalDateTime.now());
+			cardsRepository.save(card);
+		}
+
 	}
 
-	public void deleteById(Long id) {
+	public CardsCreateDTO getCardById(Integer id) {
+		Cards card = findCardById(id);
+
+		CardsCreateDTO cardsCreateDTO = new CardsCreateDTO();
+		cardsCreateDTO.setId(card.getId());
+		cardsCreateDTO.setTitle(card.getTitle());
+		cardsCreateDTO.setDayId(card.getDay().getId());
+		cardsCreateDTO.setStatusId(card.getStatus().getId());
+		cardsCreateDTO.setUpdatedAt(card.getUpdatedAt());
+		cardsCreateDTO.setOrder(card.getOrder());
+
+		return cardsCreateDTO;
+	}
+
+	public void deleteById(Integer id) {
 		cardsRepository.deleteById(id);
 	}
 

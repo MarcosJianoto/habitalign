@@ -19,7 +19,7 @@ public class Cards {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cards_sequence")
 	@SequenceGenerator(name = "cards_sequence", sequenceName = "cards_sequence", allocationSize = 1)
-	private Long id;
+	private Integer id;
 
 	@Column(name = "title")
 	private String title;
@@ -41,11 +41,11 @@ public class Cards {
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

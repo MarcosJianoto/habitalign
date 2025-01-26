@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.habitalign.entities.Statuses;
 
 @Repository
-public interface StatusesRepository extends JpaRepository<Statuses, Long> {
+public interface StatusesRepository extends JpaRepository<Statuses, Integer> {
 
 	Optional<Statuses> findById(Integer statusId);
 }

@@ -23,14 +23,14 @@ public class StatusesService {
 		statusesRepository.save(statuses);
 	}
 
-	public void updateStatuses(Long id, StatusesDTO statusesDTO) {
+	public void updateStatuses(Integer id, StatusesDTO statusesDTO) {
 		Statuses statuses = statusesRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Status not found"));
 
 		statuses.setName(statusesDTO.getName());
 	}
 
-	public StatusesDTO getStatusesById(Long id) {
+	public StatusesDTO getStatusesById(Integer id) {
 
 		Statuses statuses = statusesRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Status not found"));
@@ -42,7 +42,7 @@ public class StatusesService {
 
 	}
 
-	public void deleteById(Long id) {
+	public void deleteById(Integer id) {
 		statusesRepository.deleteById(id);
 	}
 

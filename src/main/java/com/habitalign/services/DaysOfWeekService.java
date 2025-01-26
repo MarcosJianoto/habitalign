@@ -28,7 +28,7 @@ public class DaysOfWeekService {
 
 		DaysOfWeekEnum[] daysOfWeekEnum = DaysOfWeekEnum.values();
 
-		Long idDayWeek = 1L;
+		Integer idDayWeek = 1;
 		for (DaysOfWeekEnum day : daysOfWeekEnum) {
 
 			String dayName = day.name();
@@ -54,7 +54,7 @@ public class DaysOfWeekService {
 
 	}
 
-	public void updateIsActiveDaysOfWeek(Long id, DaysOfWeekActiveDTO daysOfWeekActiveDTO) {
+	public void updateIsActiveDaysOfWeek(Integer id, DaysOfWeekActiveDTO daysOfWeekActiveDTO) {
 		DaysOfWeek daysOfWeek = daysOfWeekRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("ID day not found"));
 

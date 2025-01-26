@@ -29,20 +29,20 @@ public class StatusesController {
 	}
 
 	@PutMapping("/updatestatuses/{id}")
-	public ResponseEntity<Void> updateStatuses(@RequestBody StatusesDTO statusesDTO, @PathVariable Long id) {
+	public ResponseEntity<Void> updateStatuses(@RequestBody StatusesDTO statusesDTO, @PathVariable Integer id) {
 
 		statusesService.updateStatuses(id, statusesDTO);
 		return ResponseEntity.noContent().build();
 	}
 
 	@GetMapping("/getstatuses/{id}")
-	public ResponseEntity<StatusesDTO> getStatuses(@PathVariable Long id) {
+	public ResponseEntity<StatusesDTO> getStatuses(@PathVariable Integer id) {
 		StatusesDTO statusesDTO = statusesService.getStatusesById(id);
 		return ResponseEntity.ok().body(statusesDTO);
 	}
 
 	@DeleteMapping("/deletestatuses/{id}")
-	public void deleteStatuses(@PathVariable Long id) {
+	public void deleteStatuses(@PathVariable Integer id) {
 		statusesService.deleteById(id);
 	}
 

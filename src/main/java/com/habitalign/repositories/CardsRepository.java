@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.habitalign.entities.Cards;
 
 @Repository
-public interface CardsRepository extends JpaRepository<Cards, Long> {
+public interface CardsRepository extends JpaRepository<Cards, Integer> {
 }

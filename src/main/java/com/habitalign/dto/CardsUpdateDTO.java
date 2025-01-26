@@ -4,11 +4,9 @@ import java.time.LocalDateTime;
 
 public class CardsUpdateDTO {
 
-	private Long id;
+	private Integer id;
 	private String title;
-	private Long dayId;
-	private Long statusId;
-	private Integer order;
+	private Integer statusId;
 	private LocalDateTime updatedAt;
 
 	public CardsUpdateDTO() {
@@ -16,21 +14,19 @@ public class CardsUpdateDTO {
 
 	}
 
-	public CardsUpdateDTO(Long id, String title, Long dayId, Long statusId, Integer order, LocalDateTime updatedAt) {
+	public CardsUpdateDTO(Integer id, String title, Integer dayId, Integer statusId, Integer order, LocalDateTime updatedAt) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.dayId = dayId;
 		this.statusId = statusId;
-		this.order = order;
 		this.updatedAt = updatedAt;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -42,28 +38,12 @@ public class CardsUpdateDTO {
 		this.title = title;
 	}
 
-	public Long getDayId() {
-		return dayId;
-	}
-
-	public void setDayId(Long dayId) {
-		this.dayId = dayId;
-	}
-
-	public Long getStatusId() {
+	public Integer getStatusId() {
 		return statusId;
 	}
 
-	public void setStatusId(Long statusId) {
+	public void setStatusId(Integer statusId) {
 		this.statusId = statusId;
-	}
-
-	public Integer getOrder() {
-		return order;
-	}
-
-	public void setOrder(Integer order) {
-		this.order = order;
 	}
 
 	public LocalDateTime getUpdatedAt() {
