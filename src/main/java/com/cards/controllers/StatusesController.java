@@ -1,4 +1,4 @@
-package com.habitalign.controllers;
+package com.cards.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.habitalign.dto.StatusesDTO;
-import com.habitalign.services.StatusesService;
+import com.cards.dto.StatusesDTO;
+import com.cards.services.StatusesService;
 
 @RestController
 public class StatusesController {

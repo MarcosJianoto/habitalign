@@ -1,10 +1,10 @@
-package com.habitalign.services;
+package com.cards.services;
 
 import org.springframework.stereotype.Service;
 
-import com.habitalign.dto.StatusesDTO;
-import com.habitalign.entities.Statuses;
-import com.habitalign.repositories.StatusesRepository;
+import com.cards.dto.StatusesDTO;
+import com.cards.entities.Statuses;
+import com.cards.repositories.StatusesRepository;
 
 @Service
 public class StatusesService {

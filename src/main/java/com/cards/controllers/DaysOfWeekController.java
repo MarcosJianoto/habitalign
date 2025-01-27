@@ -1,4 +1,4 @@
-package com.habitalign.controllers;
+package com.cards.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.habitalign.dto.DaysOfWeekActiveDTO;
-import com.habitalign.services.DaysOfWeekService;
+import com.cards.dto.DaysOfWeekActiveDTO;
+import com.cards.services.DaysOfWeekService;
 
 @RestController
 public class DaysOfWeekController {

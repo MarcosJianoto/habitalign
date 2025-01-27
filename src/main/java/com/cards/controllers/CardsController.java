@@ -1,4 +1,4 @@
-package com.habitalign.controllers;
+package com.cards.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.habitalign.dto.CardUpdateDayIdDTO;
-import com.habitalign.dto.CardUpdatePositionColumnIdDTO;
-import com.habitalign.dto.CardsCreateDTO;
-import com.habitalign.dto.CardsUpdateDTO;
-import com.habitalign.services.CardsService;
+import com.cards.dto.CardUpdateDayIdDTO;
+import com.cards.dto.CardUpdatePositionColumnIdDTO;
+import com.cards.dto.CardsCreateDTO;
+import com.cards.dto.CardsUpdateDTO;
+import com.cards.services.CardsService;
 
 @RestController
 public class CardsController {

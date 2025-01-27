@@ -1,13 +1,13 @@
-package com.habitalign.services;
+package com.cards.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.habitalign.dto.DaysOfWeekActiveDTO;
-import com.habitalign.entities.DaysOfWeek;
-import com.habitalign.entities.DaysOfWeekEnum;
-import com.habitalign.repositories.DaysOfWeekRepository;
+import com.cards.dto.DaysOfWeekActiveDTO;
+import com.cards.entities.DaysOfWeek;
+import com.cards.entities.DaysOfWeekEnum;
+import com.cards.repositories.DaysOfWeekRepository;
 
 @Service
 public class DaysOfWeekService {

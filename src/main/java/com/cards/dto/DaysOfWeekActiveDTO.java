@@ -1,11 +1,9 @@
-package com.habitalign.dto;
+package com.cards.dto;
 
-public class DaysOfWeekDTO {
+public class DaysOfWeekActiveDTO {
 
 	private Integer id;
 
-	private String name;
-	
 	private Boolean view;
 
 	public Integer getId() {
@@ -16,14 +14,6 @@ public class DaysOfWeekDTO {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public Boolean getView() {
 		return view;
 	}
@@ -31,6 +21,5 @@ public class DaysOfWeekDTO {
 	public void setView(Boolean view) {
 		this.view = view;
 	}
-	
-	
+
 }

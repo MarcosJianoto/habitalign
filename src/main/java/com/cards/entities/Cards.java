@@ -1,4 +1,4 @@
-package com.habitalign.entities;
+package com.cards.entities;
 
 import java.time.LocalDateTime;
 

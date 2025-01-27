@@ -1,19 +1,19 @@
-package com.habitalign.services;
+package com.cards.services;
 
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
-import com.habitalign.dto.CardUpdateDayIdDTO;
-import com.habitalign.dto.CardUpdatePositionColumnIdDTO;
-import com.habitalign.dto.CardsCreateDTO;
-import com.habitalign.dto.CardsUpdateDTO;
-import com.habitalign.entities.Cards;
-import com.habitalign.entities.DaysOfWeek;
-import com.habitalign.entities.Statuses;
-import com.habitalign.repositories.CardsRepository;
-import com.habitalign.repositories.DaysOfWeekRepository;
-import com.habitalign.repositories.StatusesRepository;
+import com.cards.dto.CardUpdateDayIdDTO;
+import com.cards.dto.CardUpdatePositionColumnIdDTO;
+import com.cards.dto.CardsCreateDTO;
+import com.cards.dto.CardsUpdateDTO;
+import com.cards.entities.Cards;
+import com.cards.entities.DaysOfWeek;
+import com.cards.entities.Statuses;
+import com.cards.repositories.CardsRepository;
+import com.cards.repositories.DaysOfWeekRepository;
+import com.cards.repositories.StatusesRepository;
 
 @Service
 public class CardsService {

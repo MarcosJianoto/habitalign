@@ -1,4 +1,4 @@
-package com.habitalign.entities;
+package com.cards.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,23 +8,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "days_of_week")
-public class DaysOfWeek {
+@Table(name = "statuses")
+public class Statuses {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "view")
-	private Boolean view;
-
-	public DaysOfWeek(Integer l, String string) {
-		// TODO Auto-generated constructor stub
+	public Statuses(Integer l, String string) {
 	}
 
-	public DaysOfWeek() {
+	public Statuses() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -43,13 +40,4 @@ public class DaysOfWeek {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public Boolean getView() {
-		return view;
-	}
-
-	public void setView(Boolean view) {
-		this.view = view;
-	}
-
 }

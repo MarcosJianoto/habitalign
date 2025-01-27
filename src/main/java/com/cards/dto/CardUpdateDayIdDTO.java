@@ -1,4 +1,4 @@
-package com.habitalign.dto;
+package com.cards.dto;
 
 public class CardUpdateDayIdDTO {
 
