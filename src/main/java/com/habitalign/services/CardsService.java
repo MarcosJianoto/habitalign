@@ -87,7 +87,7 @@ public class CardsService {
 
 		Cards card = findCardById(id);
 
-		if (cardUpdatePositionColumnIdDTO.getPositionId() != card.getOrder()) {
+		if (cardUpdatePositionColumnIdDTO.getPositionId().equals(card.getOrder())) {
 			card.setOrder(cardUpdatePositionColumnIdDTO.getPositionId());
 			card.setUpdatedAt(LocalDateTime.now());
 			cardsRepository.save(card);
